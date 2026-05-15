@@ -217,7 +217,12 @@ snake.some(part=>part.x === head.x && part.y === head.y);
 if(hitWall || hitSelf){
 
 showLiveNotif?.("Game Over");
-snakeReset();
+
+if(snakeTimer){
+clearInterval(snakeTimer);
+snakeTimer = null;
+}
+
 return;
 
 }
@@ -285,5 +290,16 @@ size - 4,
 snakeCtx.fill();
 
 });
+
+}
+
+function stopSnakeGame(){
+
+if(snakeTimer){
+clearInterval(snakeTimer);
+snakeTimer = null;
+}
+
+document.removeEventListener("keydown", snakeKeyHandler);
 
 }
