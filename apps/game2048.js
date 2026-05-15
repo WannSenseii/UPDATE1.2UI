@@ -281,3 +281,9 @@ board2048.map(row=>row[c])
 );
 
 }
+
+function stop2048Game(){
+
+document.removeEventListener("keydown", game2048KeyHandler);
+
+}
